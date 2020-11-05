@@ -20,8 +20,9 @@ namespace ObjektUppg2
         static void Main(string[] args)
         {
             List<DictEntry> dict = new List<DictEntry>();
+            string fileName = @"D:\Users\tomas\ordlista.txt";
 
-            using (StreamReader file = new StreamReader(@"D:\Users\tomas\ordlista.txt"))
+            using (StreamReader file = new StreamReader(fileName))
             {
                 string line;
 
@@ -55,11 +56,11 @@ namespace ObjektUppg2
             {
                 Console.Write("> ");
                 command = Console.ReadLine();
-                if(command == "sluta")
+                if (command == "sluta")
                 {
                     Console.WriteLine("Hej då!");
                 }
-                else if(command == "lägg in")
+                else if (command == "lägg in")
                 {
                     Console.Write("Ange ett engelskt ord: ");
                     string eng = Console.ReadLine();
@@ -67,6 +68,16 @@ namespace ObjektUppg2
                     string swe = Console.ReadLine();
                     Console.WriteLine($"{eng} == {swe}");
                     dict.Add(new DictEntry(eng, swe));
+                }
+                else if (command == "spara")
+                {
+                    using (StreamWriter writer = new StreamWriter(fileName))
+                    {
+                        for(int i = 0; i < dict.Count(); i++)
+                        {
+                            writer.WriteLine("{0}#{1}", dict[i].english, dict[i].swedish);
+                        }
+                    }
                 }
                 else if (command == "visa")
                 {
