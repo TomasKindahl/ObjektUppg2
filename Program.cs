@@ -59,6 +59,30 @@ namespace ObjektUppg2
                 {
                     Console.WriteLine("Hej då!");
                 }
+                else if(command == "lägg in")
+                {
+                    Console.Write("Ange ett engelskt ord: ");
+                    string eng = Console.ReadLine();
+                    Console.Write($"Ange svensk översättning för {eng}: ");
+                    string swe = Console.ReadLine();
+                    Console.WriteLine($"{eng} == {swe}");
+                    dict.Add(new DictEntry(eng, swe));
+                }
+                else if (command == "visa")
+                {
+                    Console.WriteLine("{0,-10}{1,-20}",
+                                      "english", "swedish");
+                    Console.WriteLine("-------------------");
+                    for (int i = 0; i < dict.Count(); i++)
+                    {
+                        if (dict[i] != null)
+                        {
+                            Console.WriteLine("{0,-10}{1,-20}",
+                                              dict[i].english, dict[i].swedish);
+                        }
+                    }
+                    Console.WriteLine("-------------------");
+                }
                 else
                 {
                     Console.WriteLine($"Okänt kommando: {command}");
