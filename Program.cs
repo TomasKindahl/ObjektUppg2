@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -52,6 +53,7 @@ namespace ObjektUppg2
             Console.WriteLine("Välkommen till ordlistan!");
             Console.WriteLine("Skriv 'sluta' för att sluta!");
             string command;
+            Random rand = new Random();
             do
             {
                 Console.Write("> ");
@@ -90,6 +92,22 @@ namespace ObjektUppg2
                             Console.WriteLine($"hittade {eng} på index {i}");
                             dict.RemoveAt(i);
                         }
+                    }
+                }
+                else if (command == "testa")
+                {
+                    int testOrdsIndex = rand.Next(0, dict.Count());
+                    string eng = dict[testOrdsIndex].english;
+                    string swe = dict[testOrdsIndex].swedish;
+                    Console.Write($"Vad är '{eng}' på svenska? ");
+                    string answer = Console.ReadLine();
+                    if(answer == swe)
+                    {
+                        Console.WriteLine("Perfekt!");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Tyvärr fel! '{eng}' är '{swe}' på svenska.");
                     }
                 }
                 else if (command == "visa")
