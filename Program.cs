@@ -79,6 +79,19 @@ namespace ObjektUppg2
                         }
                     }
                 }
+                else if (command == "ta bort")
+                {
+                    Console.Write("Ange det engelska ordet: ");
+                    string eng = Console.ReadLine();
+                    for(int i = 0; i < dict.Count(); i++)
+                    {
+                        if(eng == dict[i].english)
+                        {
+                            Console.WriteLine($"hittade {eng} på index {i}");
+                            dict.RemoveAt(i);
+                        }
+                    }
+                }
                 else if (command == "visa")
                 {
                     Console.WriteLine("{0,-10}{1,-20}",
