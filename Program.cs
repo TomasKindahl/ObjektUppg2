@@ -47,6 +47,23 @@ namespace ObjektUppg2
                 }
             }
             Console.WriteLine("-------------------");
+
+            Console.WriteLine("Välkommen till ordlistan!");
+            Console.WriteLine("Skriv 'sluta' för att sluta!");
+            string command;
+            do
+            {
+                Console.Write("> ");
+                command = Console.ReadLine();
+                if(command == "sluta")
+                {
+                    Console.WriteLine("Hej då!");
+                }
+                else
+                {
+                    Console.WriteLine($"Okänt kommando: {command}");
+                }
+            } while (command != "sluta");
         }
     }
 }
