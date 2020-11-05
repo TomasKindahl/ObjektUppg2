@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,13 +20,21 @@ namespace ObjektUppg2
         static void Main(string[] args)
         {
             List<DictEntry> dict = new List<DictEntry>();
-            dict.Add(new DictEntry("head", "huvud"));
-            dict.Add(new DictEntry("see", "se"));
-            dict.Add(new DictEntry("father", "far, pappa"));
-            dict.Add(new DictEntry("tree", "träd"));
-            dict.Add(new DictEntry("moon", "måne"));
-            dict.Add(new DictEntry("move", "flytta"));
-            dict.Add(new DictEntry("city", "stad"));
+
+            using (StreamReader file = new StreamReader(@"D:\Users\tomas\ordlista.txt"))
+            {
+                string line;
+
+                while ((line = file.ReadLine()) != null)
+                {
+                    string[] words = line.Split('#');
+                    // Console.WriteLine(line);
+                    // Console.WriteLine("{0} - {1}", words[0], words[1]);
+                    dict.Add(new DictEntry(words[0], words[1]));
+                }
+                file.Close();
+            }
+
             Console.WriteLine("{0,-10}{1,-20}",
                               "english", "swedish");
             Console.WriteLine("-------------------");
